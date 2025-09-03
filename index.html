@@ -149,12 +149,32 @@
         }
       }
 
+      /* bottom warning */
+      .bottom-warning {
+        position: absolute;
+        bottom: 20px;
+        width: 100%;
+        text-align: center;
+        color: #ff4d4d;
+        font-weight: bold;
+        font-size: 1rem;
+        cursor: pointer;
+      }
+
+      .bottom-warning a {
+        color: #f36262;
+        text-decoration: underline;
+      }
+
       /* responsive adjustments */
       @media (max-width: 600px) {
         .logo {
           font-size: 2rem;
         }
         .tagline {
+          font-size: 0.9rem;
+        }
+        .bottom-warning {
           font-size: 0.9rem;
         }
       }
@@ -174,6 +194,10 @@
 
     <div class="progress">
       <div class="progress-bar"></div>
+    </div>
+
+    <div class="bottom-warning">
+      <a href="admin.html">Admin Access</a>
     </div>
 
     <script>
