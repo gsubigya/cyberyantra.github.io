@@ -7,7 +7,14 @@
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
-
+  
+  <url>
+    <loc>https://www.cyberyantra.com/node</loc>
+    <lastmod>2025-10-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
   <url>
     <loc>https://www.cyberyantra.com/#about</loc>
     <lastmod>2025-10-01</lastmod>
