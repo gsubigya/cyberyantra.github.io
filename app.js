@@ -419,7 +419,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Console welcome message
   console.log(
-    "%c🛡️ Cyberyantra Website",
+    "%cCyberyantra",
     "color: #2563eb; font-size: 16px; font-weight: bold;"
   );
   console.log(
@@ -427,7 +427,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "color: #6b7280; font-size: 12px;"
   );
   console.log(
-    "%cFor security reports: info@cyberyantra.org",
+    "%cFor security reports: security@cyberyantra.com",
     "color: #059669; font-size: 12px;"
   );
 });
@@ -465,3 +465,4 @@ window.CyberyantraUtils = {
   debounce,
   throttle,
 };
+
