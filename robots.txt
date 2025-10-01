@@ -1,0 +1,17 @@
+# robots.txt for Cyberyantra - Cybersecurity Awareness Organization
+# Allow all web crawlers full access to website for indexing
+User-agent: *
+Disallow:
+
+# Specify location of the XML sitemap to aid in URL discovery
+Sitemap: https://www.cyberyantra.org/sitemap.xml
+
+# Crawl-delay directive can be used to reduce server load (optional)
+# Crawl-delay: 10
+
+# Block less useful sections or temporary URLs (if any), example:
+# Disallow: /temp/
+Disallow: /admin
+
+# Specify host preference for crawlers that respect this field (optional)
+# Host: www.cyberyantra.com
