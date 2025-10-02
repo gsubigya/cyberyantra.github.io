@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>⚠️ Unauthorized Access Detected</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 20px;
+        background-color: #000;
+        color: #fff;
+        font-family: "Roboto", sans-serif;
+        line-height: 1.6;
+        text-align: center;
+        user-select: none; /* Prevent selecting text */
+      }
+      .warning-sign {
+        font-size: 6rem;
+        color: red;
+        margin-bottom: 20px;
+      }
+      h1 {
+        font-size: 2rem;
+        color: red;
+        margin-bottom: 15px;
+      }
+      p {
+        font-size: 1rem;
+        color: #ccc;
+        margin: 10px 0;
+      }
+      .scary-data {
+        color: #ff4d4d;
+        font-weight: bold;
+      }
+      #data {
+        margin-top: 20px;
+        background-color: #111;
+        padding: 15px;
+        border-radius: 5px;
+        font-family: monospace;
+        white-space: pre-wrap;
+        color: #ff4d4d;
+        text-align: left;
+        display: inline-block;
+      }
+      .email a {
+        color: #fff;
+        text-decoration: underline;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="warning-sign">⚠️</div>
+    <h1>Unauthorized Access Detected!</h1>
+    <p>Your curiosity has triggered our security protocols.</p>
+    <p>The following information has been collected from your session:</p>
+
+    <div id="data">Loading your data...</div>
+
+    <p class="email">
+      If you want to know more, contact:
+      <a href="mailto:y0urc00kd@cyberyantra.com">y0urc00kd@cyberyantra.com</a>
+    </p>
+
+    <script>
+      async function getData() {
+        const dataDiv = document.getElementById("data");
+
+        const ua = navigator.userAgent;
+        const platform = navigator.platform;
+        const lang = navigator.language;
+        const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        const screenSize = `${window.screen.width}x${window.screen.height}`;
+        const colorDepth = window.screen.colorDepth;
+        const windowInner = `${window.innerWidth}x${window.innerHeight}`;
+        const windowOuter = `${window.outerWidth}x${window.outerHeight}`;
+        const referrer = document.referrer || "None";
+        const cookiesLength = document.cookie.length;
+        const localStorageCount = Object.keys(localStorage).length;
+        const battery = navigator.getBattery
+          ? await navigator.getBattery()
+          : null;
+        const batteryLevel = battery
+          ? `${battery.level * 100}%`
+          : "Unavailable";
+        const touchSupport = "ontouchstart" in window ? "Yes" : "No";
+        const connection =
+          navigator.connection ||
+          navigator.mozConnection ||
+          navigator.webkitConnection ||
+          {};
+        const effectiveType = connection.effectiveType || "Unknown";
+        const downlink = connection.downlink || "Unknown";
+
+        let ip = "Unable to fetch";
+        let location = "Unknown";
+        try {
+          const res = await fetch("https://api.ipify.org?format=json");
+          const ipJson = await res.json();
+          ip = ipJson.ip;
+
+          const geoRes = await fetch(`https://ipapi.co/${ip}/json/`);
+          const geo = await geoRes.json();
+          location = `${geo.city || "Unknown"}, ${geo.region || "Unknown"}, ${
+            geo.country_name || "Unknown"
+          }`;
+        } catch (e) {
+          console.error(e);
+        }
+
+        dataDiv.textContent = `
+IP Address: ${ip}
+Approx. Location: ${location}
+User-Agent: ${ua}
+Platform: ${platform}
+Language: ${lang}
+Timezone: ${timezone}
+Screen Resolution: ${screenSize}
+Color Depth: ${colorDepth}
+Window Inner Size: ${windowInner}
+Window Outer Size: ${windowOuter}
+Referrer: ${referrer}
+Cookies Length: ${cookiesLength}
+Local Storage Keys: ${localStorageCount}
+Battery Level: ${batteryLevel}
+Touch Support: ${touchSupport}
+Network Effective Type: ${effectiveType}
+Network Downlink: ${downlink} Mbps
+        `;
+      }
+
+      getData();
+
+      // Disable right-click
+      document.addEventListener("contextmenu", function (e) {
+        e.preventDefault();
+        alert("Right-click is disabled on this page!");
+      });
+
+      // Disable common dev tools keys
+      document.addEventListener("keydown", function (e) {
+        if (
+          e.key === "F12" ||
+          (e.ctrlKey &&
+            e.shiftKey &&
+            ["I", "C", "J"].includes(e.key.toUpperCase())) ||
+          (e.ctrlKey && e.key.toUpperCase() === "U")
+        ) {
+          e.preventDefault();
+          alert("Inspecting the page is disabled!");
+        }
+      });
+
+      // Replace copy text
+      document.addEventListener("copy", function (e) {
+        e.preventDefault();
+        e.clipboardData.setData("text/plain", "aww, cutiepie");
+        alert("Content copied? Cute, but we replaced it 😉");
+      });
+    </script>
+  </body>
+</html>
